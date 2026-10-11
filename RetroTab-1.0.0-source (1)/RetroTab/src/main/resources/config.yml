@@ -1,0 +1,150 @@
+config-version: 2
+
+general:
+  season: "Season 1"
+  refresh-ticks: 10
+  async-updates: true
+  fallback-value: "N/A"
+  sort-mode: RANK                # RANK | NAME | JOIN_ORDER | CUSTOM
+
+# ---------------------------------------------------------------
+# TABLIST (press TAB): header, player list entries, footer
+# ---------------------------------------------------------------
+# The ColorGens logo is an image from a resource pack. Plain text can't draw it, so the
+# default is a gradient title. If your pack has a logo glyph, put it in a header line, e.g.:
+#   - "<font:retrogens:logo>\uE000</font>"
+header:
+  - ""
+  - "<gradient:#FF5500:#FFAA00><bold>R E T R O   G E N S</bold></gradient>"
+  - "<gray>%season%"
+  - ""
+
+footer:
+  - ""
+  - "<gray>Online: <white>%server_online%<gray>/<white>%server_max%"
+  - "<gradient:#FF5500:#FFAA00>PLAY.RETROGENS.COM</gradient>"
+
+player-list:
+  # Rank badge, then the rank's name color, then the name.
+  format: "%rank_badge% %rank_name_color%%player_name%"
+
+# Keys are LuckPerms primary group names (lowercase). Players in an unlisted group use "default".
+# Badges here are plain colored text. With a resource pack you can use font glyphs instead:
+#   badge: "<font:retrogens:badges>\uE001</font>"
+ranks:
+  owner:
+    badge: "<red><bold>OWNER</bold>"
+    name-color: "<red>"
+  helper:
+    badge: "<green><bold>HELPER</bold>"
+    name-color: "<green>"
+  retro:
+    badge: "<gold><bold>RETRO</bold>"
+    name-color: "<gold>"
+  prism:
+    badge: "<white><bold>PRISM</bold>"
+    name-color: "<white>"
+  radiant:
+    badge: "<red><bold>RADIANT</bold>"
+    name-color: "<red>"
+  aura:
+    badge: "<blue><bold>AURA</bold>"
+    name-color: "<aqua>"
+  chroma:
+    badge: "<light_purple><bold>CHROMA</bold>"
+    name-color: "<light_purple>"
+  glow:
+    badge: "<yellow><bold>GLOW</bold>"
+    name-color: "<yellow>"
+  default:
+    badge: ""
+    name-color: "<white>"
+
+# Higher weight = higher in the player list (RANK uses LuckPerms group weights first, then these).
+sort:
+  rank-weights:
+    owner: 100
+    helper: 90
+    retro: 80
+    prism: 70
+    radiant: 60
+    aura: 50
+    chroma: 40
+    glow: 30
+    default: 0
+
+# ---------------------------------------------------------------
+# SIDEBAR SCOREBOARD (right side of the screen)
+# ---------------------------------------------------------------
+sidebar:
+  enabled: true
+  hide-numbers: true             # hides the red score numbers (needs a Paper build with NumberFormat)
+  title: "<gradient:#FF5500:#FFAA00><bold>RETROGENS</bold></gradient> <dark_gray>| <white>%season%"
+  footer:
+    - "<gradient:#FF5500:#FFAA00>PLAY.RETROGENS.COM</gradient>"
+
+bar-character: "▎"                # the vertical bar prefix on sidebar lines
+
+# Sections are drawn top to bottom with a blank line before each. The sidebar holds 15 lines max.
+sections:
+
+  event:
+    enabled: true
+    hide-when-empty: false       # only used if empty-lines is not set
+    lines:                       # shown while an event is active
+      - bar-color: "red"
+        text: "<red><bold>EVENT</bold>"
+      - bar-color: "yellow"
+        text: "<gray>GLOBAL EVENT: <white>%event_name%"
+      - bar-color: "green"
+        text: "<gray>REMAINING: <white>%event_remaining%"
+    empty-lines:                 # shown while no event is active
+      - bar-color: "red"
+        text: "<red><bold>EVENT</bold>"
+      - bar-color: "yellow"
+        text: "<dark_gray>NO EVENT"
+
+  statistics:
+    enabled: true
+    lines:
+      - bar-color: "red"
+        text: "<red><bold>STATISTICS</bold>"
+      - bar-color: "yellow"
+        text: "<gray>BALANCE: <white>$%retrotab_balance%"
+      - bar-color: "green"
+        text: "<gray>MONEY PER HOUR: <white>$%retrotab_money_per_hour%"
+      - bar-color: "cyan"
+        text: "<gray>GENS: <white>%retrotab_gens_current%<gray>/<white>%retrotab_gens_max%"
+      - bar-color: "magenta"
+        text: "<gray>LEVEL: <white>%retrotab_level%"
+
+bar-colors:
+  red:     "<red>"
+  yellow:  "<yellow>"
+  green:   "<green>"
+  cyan:    "<aqua>"
+  magenta: "<light_purple>"
+  blue:    "<blue>"
+  white:   "<white>"
+  gray:    "<gray>"
+  gold:    "<gold>"
+
+placeholders:
+  # Config defaults used when nothing has pushed a value yet.
+  balance-default: "0"
+  money-per-hour-default: "0"
+  gens-current-default: "0"
+  gens-max-default: "25"
+  level-default: "1"
+  event-name-default: "None"
+  event-remaining-default: "0s"
+
+events:
+  enabled: true                  # false = event feature disabled entirely
+  # Used only when no plugin has pushed an event through RetroTabAPI.
+  # Leave fallback-name empty for "no fallback event".
+  fallback-name: ""
+  fallback-remaining: "0s"
+
+debug:
+  enabled: false                 # allows /retrotab debug [player]

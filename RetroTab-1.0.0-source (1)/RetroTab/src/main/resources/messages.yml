@@ -1,0 +1,46 @@
+prefix: "<gradient:#FF5500:#FFAA00>RetroTab</gradient> <dark_gray>» <gray>"
+
+log:
+  enabled: "RetroTab v{version} enabled (refresh: {ticks} ticks, async: {async}, sections: {sections})."
+  disabled: "RetroTab disabled."
+  hook-papi: "PlaceholderAPI found - passthrough and %retrotab_*% expansion enabled."
+  hook-luckperms: "LuckPerms found - prefixes, suffixes and rank sorting enabled."
+  hook-vault: "Vault found - balance fallback enabled."
+  hook-failed: "Could not initialise the {hook} hook: {error}"
+  refresh-error: "Error while refreshing the tablist for {player}: {error}"
+
+warnings:
+  missing-key: "config.yml is missing '{key}'; using the built-in default."
+  unknown-bar-color: "Unknown bar-color '{color}' in section '{section}' line {line}; rendering it white."
+  section-no-lines: "Section '{section}' has no valid 'lines' list and will be skipped."
+  line-invalid: "Section '{section}' line {line} has no 'text' and will be skipped."
+  bad-minimessage: "Possibly malformed MiniMessage in {where}: {text}"
+  unknown-sort-mode: "Unknown sort-mode '{mode}'; falling back to RANK."
+  bad-refresh: "general.refresh-ticks must be at least 1; using 10."
+
+command:
+  no-permission: "{prefix}<red>You do not have permission to do that."
+  usage-header: "{prefix}<white>RetroTab commands:"
+  usage-reload: "<gray>/retrotab reload <dark_gray>- reload config.yml and messages.yml"
+  usage-toggle: "<gray>/retrotab toggle <player> <dark_gray>- toggle the tablist and sidebar for a player"
+  usage-event: "<gray>/retrotab event <name> <seconds> <dark_gray>- start a global event"
+  usage-event-clear: "<gray>/retrotab event clear <dark_gray>- clear the active event"
+  usage-debug: "<gray>/retrotab debug [player] <dark_gray>- print a player's rendered tablist to console"
+  reload-success: "{prefix}<green>Configuration reloaded."
+  reload-failed: "{prefix}<red>Reload failed: {error}"
+  player-not-found: "{prefix}<red>Player '{player}' is not online."
+  toggle-enabled: "{prefix}<green>Tablist and sidebar enabled for {player}."
+  toggle-disabled: "{prefix}<yellow>Tablist and sidebar disabled for {player}."
+  event-started: "{prefix}<green>Event <white>{name}</white> started for <white>{time}</white>."
+  event-cleared: "{prefix}<yellow>The active event was cleared."
+  event-invalid-seconds: "{prefix}<red>'{value}' is not a valid number of seconds (must be above 0)."
+  debug-disabled: "{prefix}<red>Debug mode is disabled. Set debug.enabled: true in config.yml."
+  debug-console-needs-player: "{prefix}<red>Console must specify a player: /retrotab debug <player>"
+  debug-sent: "{prefix}<green>Rendered tablist for {player} printed to console."
+
+debug:
+  header: "----- RetroTab debug: {player} -----"
+  list-divider: "----- list entry:"
+  sidebar-divider: "----- sidebar -----"
+  footer-divider: "----- footer -----"
+  end: "----- end of debug -----"

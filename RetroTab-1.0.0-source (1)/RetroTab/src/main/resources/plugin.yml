@@ -1,0 +1,21 @@
+name: RetroTab
+version: '${project.version}'
+main: com.retrogens.tab.RetroTab
+api-version: '1.20'
+description: Configurable ColorGens-style tablist and sidebar scoreboard for RetroGens.
+author: RetroGens
+softdepend: [PlaceholderAPI, LuckPerms, Vault]
+
+commands:
+  retrotab:
+    description: RetroTab administration.
+    usage: /<command> <reload|toggle|event|debug>
+    permission: retrotab.admin
+
+permissions:
+  retrotab.admin:
+    description: Use all RetroTab admin commands.
+    default: op
+  retrotab.see:
+    description: See the custom tablist and sidebar instead of the vanilla ones.
+    default: true
